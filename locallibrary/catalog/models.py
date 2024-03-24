@@ -5,6 +5,7 @@ from django.db import models
 from django.urls import reverse  # To generate URLS by reversing URL patterns
 
 
+
 class Genre(models.Model):
     """Model representing a book genre (e.g. Science Fiction, Non Fiction)."""
     name = models.CharField(
