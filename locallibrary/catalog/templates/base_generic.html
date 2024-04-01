@@ -17,9 +17,12 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
   </head>
   <body>
+    <nav class="navbar navbar-custom">
+      <a class="navbar-brand" href="#">The Local Library</a>
+    </nav>
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-2">
+      <div class="row" id="content">
+        <div class="col-sm-2" id="sidebar">
           {% block sidebar %}
           <ul class="sidebar-nav">
             <li><a href="{% url 'index' %}">Home</a></li>
@@ -49,7 +52,7 @@
           </ul>
           {% endif %} {% endblock %}
         </div>
-        <div class="col-sm-10">{% block content %}{% endblock %}</div>
+        <div class="col-sm-10 col-xs-10">{% block content %}{% endblock %}</div>
         {% block pagination %} {% if is_paginated %}
         <div class="pagination">
           <span class="page-links">
@@ -72,5 +75,11 @@
         {% endif %} {% endblock %}
       </div>
     </div>
+    <footer class="card rounded-0">
+      <p id="footer_text">
+      </br><em>Website implementation done by Cale Voglewede</em></br></br>
+          <em>Website code derived from MDN Local Library Django Tutorial</em>
+      </p>
+    </footer>
   </body>
 </html>

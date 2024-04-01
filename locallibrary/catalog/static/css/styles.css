@@ -1,3 +1,7 @@
+body {
+  background-color: darkolivegreen;
+}
+
 .sidebar-nav {
   margin-top: 20px;
   padding: 0;
@@ -9,4 +13,56 @@
 #logout-form button {
   padding: 0;
   margin: 0;
+}
+.navbar-brand,
+.navbar-brand:hover {
+  padding-left: 1em;
+  font-style: italic;
+  color: rosybrown;
+}
+
+.navbar-custom {
+  background-color: darkolivegreen;
+  border-bottom: 3px solid black;
+}
+
+#sidebar {
+  border-right: 3px solid black;
+  width: auto;
+}
+
+@media (max-width: 740px) {
+  #sidebar {
+    border-right: none;
+    width: auto;
+  }
+}
+
+#content {
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0.8)
+    ),
+    url("../background.jpg");
+  background-size: cover;
+}
+
+#footer_text {
+  text-align: center;
+  color: rosybrown;
+}
+
+.card {
+  border-top: 3px solid black;
+  background-color: darkolivegreen;
+  border-bottom: 0px solid black;
+}
+
+hr {
+  width: 100%;
+}
+
+.col-sm-10,
+.col-xs-10 {
+  margin-top: 20px;
 }
