@@ -26,6 +26,8 @@
   {% endif %}
   <p><strong>Imprint:</strong> {{ copy.imprint }}</p>
   <p class="text-muted"><strong>Id:</strong> {{ copy.id }}</p>
-  {% endfor %}
+  {% if perms.catalog.change_bookinstance %}
+  <a href="{% url 'renew-book-librarian' pk=copy.id %}">Renew</a>
+  {% endif %} {% endfor %}
 </div>
 {% endblock %}
