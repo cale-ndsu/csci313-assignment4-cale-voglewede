@@ -15,7 +15,10 @@ body {
   margin: 0;
 }
 .navbar-brand,
-.navbar-brand:hover {
+.navbar-brand:hover,
+.navbar-brand:visited,
+.navbar-brand:link,
+.navbar-brand:focus {
   padding-left: 1em;
   font-style: italic;
   color: rosybrown;

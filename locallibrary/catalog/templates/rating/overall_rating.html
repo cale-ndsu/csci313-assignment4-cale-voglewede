@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %} {% block content %}
+<p>
+  As a public institution, we appreciate all the feedback that we receive!
+  That's why we have a ratings form available for users of this library.
+</p>
+
+<p>
+  As of now, the average numeric rating for our library and its website is:
+  {{overall_numeric_rating}}
+</p>
+
+{% if perms.catalog.add_rating %}
+<p>If you haven't given us a review, please give a response here! <a href="{% url 'rating-create' %}">LINK</a></li></p>
+{% endif %} {% endblock %}

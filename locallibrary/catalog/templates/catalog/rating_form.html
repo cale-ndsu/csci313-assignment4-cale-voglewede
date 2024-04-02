@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %} {% block content %}
+<form action="" method="post">
+  <p>{{ user.get_username }},</p>
+  {% csrf_token %}
+  <p>
+    Please give us a rating of 1 to 10 and give a comment as to why it has
+    earned your rating.
+  </p>
+  <table>
+    {{ form.as_table }}
+  </table>
+  <input type="submit" value="Submit" />
+</form>
+{% endblock %}

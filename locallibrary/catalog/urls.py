@@ -23,3 +23,9 @@ urlpatterns += [
     path('author/<int:pk>/update/', views.AuthorUpdate.as_view(), name='author-update'),
     path('author/<int:pk>/delete/', views.AuthorDelete.as_view(), name='author-delete'),
 ]
+
+urlpatterns += [
+    path('overall_rating', views.overall_rating, name='overall-rating'),
+    path('rate_us', views.RatingCreate.as_view(), name='rating-create'),
+    
+]

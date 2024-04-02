@@ -117,7 +117,7 @@ from .models import Author
 class AuthorCreate(PermissionRequiredMixin, CreateView):
     model = Author
     fields = ['first_name', 'last_name', 'date_of_birth', 'date_of_death']
-    initial = {'date_of_death': '11/11/2023'}
+    #initial = {'date_of_death': '11/11/2023'}
     permission_required = 'catalog.add_author'
 
 class AuthorUpdate(PermissionRequiredMixin, UpdateView):
@@ -139,3 +139,46 @@ class AuthorDelete(PermissionRequiredMixin, DeleteView):
             return HttpResponseRedirect(
                 reverse("author-delete", kwargs={"pk": self.object.pk})
             )
+
+from .models import Rating
+
+def overall_rating(request):
+    model = Rating
+    ratings = Rating.objects.all()
+    ratings_list = list(ratings)
+    counter = 0
+    total = 0
+    for x in ratings_list:
+        total += x.numeric_rating
+        counter += 1
+    overall_numeric_rating = 0
+    if counter != 0:
+        overall_numeric_rating = total / counter
+
+    
+    context = {
+        'overall_numeric_rating': overall_numeric_rating,
+    }
+    return render(request, 'rating/overall_rating.html', context=context)
+
+    context = {
+        'num_books': num_books,
+
+    }
+
+class RatingCreate(PermissionRequiredMixin, CreateView):
+    model = Rating
+    fields = ["numeric_rating","comment"]
+    permission_required='catalog.add_rating'
+    success_url = reverse_lazy('overall-rating')
+
+    def form_valid(self, form):
+        try:
+            form.instance.user = self.request.user
+            super().form_valid(form)
+            return HttpResponseRedirect(self.success_url)
+        except Exception as e:
+            return HttpResponseRedirect(reverse_lazy('rating-create'))
+        
+        
+    

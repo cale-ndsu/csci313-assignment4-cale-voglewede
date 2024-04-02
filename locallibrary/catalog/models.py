@@ -130,9 +130,6 @@ class BookInstance(models.Model):
         """String for representing the Model object."""
         return f'{self.id} ({self.book.title})'
 
-    
-
-
 class Author(models.Model):
     """Model representing an author."""
     first_name = models.CharField(max_length=100)
@@ -150,3 +147,17 @@ class Author(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         return f'{self.last_name}, {self.first_name}'
+
+from django.core.validators import MaxValueValidator, MinValueValidator
+from django.contrib.auth.models import User
+
+class Rating(models.Model):
+    """Represent a rating a user assigns to the library"""
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    numeric_rating = models.IntegerField(validators=[MaxValueValidator(10),MinValueValidator(1)])
+    comment = models.CharField(max_length=1000)
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return f'{self.numeric_rating},\n{self.comment}'
